@@ -19,8 +19,6 @@ BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xv)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-# pkgconfig(libdrm_intel) currently only exists on x86*
 ExclusiveArch:  %ix86 x86_64
 
 %description
