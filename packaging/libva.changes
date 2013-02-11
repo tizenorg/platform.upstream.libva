@@ -1,3 +1,6 @@
+* Mon Feb 11 2013 Anas Nashif <anas.nashif@intel.com> submit/trunk/20130211.174659@8edcb1c
+- /usr/lib64 -> %{_libdir}
+
 * Mon Feb 11 2013 Anas Nashif <anas.nashif@intel.com> libva-1.0.11@9b24e83
 - Build with wayland support
 
