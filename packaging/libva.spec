@@ -66,7 +66,7 @@ This contains the dummy driver.
 %setup -q
 
 %build
-autoreconf -v --install
+%autogen
 %configure --enable-dummy-driver \
            --enable-dummy-backend \
            --enable-glx \
