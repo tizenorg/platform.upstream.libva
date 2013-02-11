@@ -1,5 +1,5 @@
 Name:           libva
-Version:        1.0.16
+Version:        1.1.0
 Release:        0
 License:        MIT
 Summary:        Video Acceleration (VA) API for Linux
@@ -19,6 +19,7 @@ BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xv)
+BuildRequires:  pkgconfig(wayland-egl)
 ExclusiveArch:  %ix86 x86_64
 
 %description
@@ -27,7 +28,7 @@ The library loads a hardware dependendent driver.
 
 %package devel
 Summary:        Video Acceleration (VA) API for Linux -- development files
-Group:          Development/Languages/C and C++
+Group:          Development/Libraries
 Requires:       libva = %{version}
 Requires:       pkgconfig(gl)
 Requires:       pkgconfig(libdrm)
@@ -69,6 +70,7 @@ autoreconf -v --install
            --enable-dummy-backend \
            --enable-glx \
            --enable-egl \
+           --enable-wayland \
            --with-drivers-path=%{_libdir}/dri
 make %{?_smp_mflags}
 
@@ -96,12 +98,13 @@ grep -r include %{buildroot}%{_includedir}
 
 %files
 %defattr(-, root, root)
+%license COPYING
 %{_libdir}/libva.so.*
 %{_libdir}/libva-tpi.so.*
 %{_libdir}/libva-x11.so.*
 %{_libdir}/libva-glx.so.*
 %{_libdir}/libva-egl.so.*
-%{_libdir}/libva-dummy.so.*
+/usr/lib64/libva-drm.so.*
 
 %files devel
 %defattr(-,root,root,-)
@@ -110,7 +113,7 @@ grep -r include %{buildroot}%{_includedir}
 %{_libdir}/libva-x11.so
 %{_libdir}/libva-glx.so
 %{_libdir}/libva-egl.so
-%{_libdir}/libva-dummy.so
+/usr/lib64/libva-drm.so
 %{_includedir}/va
 %{_libdir}/pkgconfig/libva*.pc
 
