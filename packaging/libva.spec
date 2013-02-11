@@ -20,6 +20,7 @@ BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xv)
 BuildRequires:  pkgconfig(wayland-egl)
+BuildRequires:  pkgconfig(wayland-client)
 ExclusiveArch:  %ix86 x86_64
 
 %description
@@ -90,6 +91,7 @@ grep -r include %{buildroot}%{_includedir}
 %{_bindir}/mpeg2vldemo
 %{_bindir}/putsurface
 %{_bindir}/loadjpeg
+%{_bindir}/putsurface_wayland
 
 %files -n vaapi-dummy-driver
 %defattr(-,root,root,-)
@@ -104,6 +106,7 @@ grep -r include %{buildroot}%{_includedir}
 %{_libdir}/libva-x11.so.*
 %{_libdir}/libva-glx.so.*
 %{_libdir}/libva-egl.so.*
+%{_libdir}/libva-wayland.so.*
 /usr/lib64/libva-drm.so.*
 
 %files devel
@@ -113,6 +116,7 @@ grep -r include %{buildroot}%{_includedir}
 %{_libdir}/libva-x11.so
 %{_libdir}/libva-glx.so
 %{_libdir}/libva-egl.so
+%{_libdir}/libva-wayland.so
 /usr/lib64/libva-drm.so
 %{_includedir}/va
 %{_libdir}/pkgconfig/libva*.pc
