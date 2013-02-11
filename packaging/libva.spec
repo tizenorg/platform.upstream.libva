@@ -107,7 +107,7 @@ grep -r include %{buildroot}%{_includedir}
 %{_libdir}/libva-glx.so.*
 %{_libdir}/libva-egl.so.*
 %{_libdir}/libva-wayland.so.*
-/usr/lib64/libva-drm.so.*
+%{_libdir}/libva-drm.so.*
 
 %files devel
 %defattr(-,root,root,-)
@@ -117,7 +117,7 @@ grep -r include %{buildroot}%{_includedir}
 %{_libdir}/libva-glx.so
 %{_libdir}/libva-egl.so
 %{_libdir}/libva-wayland.so
-/usr/lib64/libva-drm.so
+%{_libdir}/libva-drm.so
 %{_includedir}/va
 %{_libdir}/pkgconfig/libva*.pc
 
