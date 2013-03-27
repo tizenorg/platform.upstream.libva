@@ -1,3 +1,6 @@
+* Wed Mar 27 2013 Anas Nashif <anas.nashif@intel.com> libva-1.1.1@450ef75
+- changelog: update to 1.1.1
+
 * Mon Feb 11 2013 Anas Nashif <anas.nashif@intel.com> submit/trunk/20130211.174659@8edcb1c
 - /usr/lib64 -> %{_libdir}
 
