@@ -1,10 +1,10 @@
 Name:           libva
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 License:        MIT
 Summary:        Video Acceleration (VA) API for Linux
 Url:            http://freedesktop.org/wiki/Software/vaapi
-Group:          System/Libraries
+Group:          Multimedia/Video
 Source:         %{name}-%{version}.tar.bz2
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -44,7 +44,7 @@ This package provides the development environment for libva.
 
 %package -n vaapi-tools
 Summary:        Video Acceleration (VA) API for Linux
-Group:          System/Libraries
+Group:          Multimedia/Video
 
 %description -n vaapi-tools
 The libva library implements the Video Acceleration (VA) API for Linux.
@@ -54,7 +54,7 @@ This is a set of tools around vaapi livrary.
 
 %package -n vaapi-dummy-driver
 Summary:        Video Acceleration (VA) API for Linux
-Group:          System/Libraries
+Group:          Multimedia/Video
 
 %description -n vaapi-dummy-driver
 The libva library implements the Video Acceleration (VA) API for Linux.
