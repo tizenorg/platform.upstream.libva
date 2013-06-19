@@ -1,3 +1,5 @@
+%bcond_with wayland 
+
 Name:           libva
 Version:        1.1.1
 Release:        0
@@ -19,8 +21,10 @@ BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xv)
+%if %{with wayland}
 BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(wayland-client)
+%endif
 ExclusiveArch:  %ix86 x86_64
 
 %description
@@ -71,7 +75,9 @@ This contains the dummy driver.
            --enable-dummy-backend \
            --enable-glx \
            --enable-egl \
+%if %{with wayland}
            --enable-wayland \
+%endif
            --with-drivers-path=%{_libdir}/dri
 make %{?_smp_mflags}
 
@@ -91,7 +97,9 @@ grep -r include %{buildroot}%{_includedir}
 %{_bindir}/mpeg2vldemo
 %{_bindir}/putsurface
 %{_bindir}/loadjpeg
+%if %{with wayland}
 %{_bindir}/putsurface_wayland
+%endif
 
 %files -n vaapi-dummy-driver
 %defattr(-,root,root,-)
@@ -106,7 +114,9 @@ grep -r include %{buildroot}%{_includedir}
 %{_libdir}/libva-x11.so.*
 %{_libdir}/libva-glx.so.*
 %{_libdir}/libva-egl.so.*
+%if %{with wayland}
 %{_libdir}/libva-wayland.so.*
+%endif
 %{_libdir}/libva-drm.so.*
 
 %files devel
@@ -116,7 +126,9 @@ grep -r include %{buildroot}%{_includedir}
 %{_libdir}/libva-x11.so
 %{_libdir}/libva-glx.so
 %{_libdir}/libva-egl.so
+%if %{with wayland}
 %{_libdir}/libva-wayland.so
+%endif
 %{_libdir}/libva-drm.so
 %{_includedir}/va
 %{_libdir}/pkgconfig/libva*.pc

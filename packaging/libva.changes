@@ -1,3 +1,6 @@
+* Wed Jun 19 2013 Anas Nashif <anas.nashif@intel.com> accepted/tizen/20130520.100019@a7bfaf6
+- make wayland support conditional
+
 * Wed Mar 27 2013 Anas Nashif <anas.nashif@intel.com> libva-1.1.1@450ef75
 - changelog: update to 1.1.1
 
