@@ -1,4 +1,5 @@
 %bcond_with wayland 
+%bcond_with mesa
 
 Name:           libva
 Version:        1.1.1
@@ -13,7 +14,11 @@ BuildRequires:  libtool
 BuildRequires:  mesa-devel
 BuildRequires:  pkg-config
 BuildRequires:  xz
-BuildRequires:  pkgconfig(gl)
+%if %{with mesa}
+BuildRequires: pkgconfig(gl)
+%else
+BuildRequires: pkgconfig(gles11)
+%endif
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(x11)
