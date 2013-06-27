@@ -2,7 +2,7 @@
 %bcond_with mesa
 
 Name:           libva
-Version:        1.1.1
+Version:        1.2.1
 Release:        0
 License:        MIT
 Summary:        Video Acceleration (VA) API for Linux
