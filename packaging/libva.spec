@@ -18,6 +18,7 @@ BuildRequires:  xz
 BuildRequires: pkgconfig(gl)
 %else
 BuildRequires: pkgconfig(gles11)
+BuildRequires: pkgconfig(egl)
 %endif
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libudev)
@@ -115,26 +116,12 @@ grep -r include %{buildroot}%{_includedir}
 %defattr(-, root, root)
 %license COPYING
 %{_libdir}/libva.so.*
-%{_libdir}/libva-tpi.so.*
-%{_libdir}/libva-x11.so.*
-%{_libdir}/libva-glx.so.*
-%{_libdir}/libva-egl.so.*
-%if %{with wayland}
-%{_libdir}/libva-wayland.so.*
-%endif
-%{_libdir}/libva-drm.so.*
+%{_libdir}/libva-*.so.*
 
 %files devel
 %defattr(-,root,root,-)
 %{_libdir}/libva.so
-%{_libdir}/libva-tpi.so
-%{_libdir}/libva-x11.so
-%{_libdir}/libva-glx.so
-%{_libdir}/libva-egl.so
-%if %{with wayland}
-%{_libdir}/libva-wayland.so
-%endif
-%{_libdir}/libva-drm.so
+%{_libdir}/libva-*.so
 %{_includedir}/va
 %{_libdir}/pkgconfig/libva*.pc
 
