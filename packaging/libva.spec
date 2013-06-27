@@ -100,6 +100,7 @@ grep -r include %{buildroot}%{_includedir}
 %{_bindir}/avcenc
 %{_bindir}/h264encode
 %{_bindir}/mpeg2vldemo
+%{_bindir}/mpeg2vaenc
 %{_bindir}/putsurface
 %{_bindir}/loadjpeg
 %if %{with wayland}
