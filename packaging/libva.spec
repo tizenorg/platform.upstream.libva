@@ -9,6 +9,7 @@ Summary:        Video Acceleration (VA) API for Linux
 Url:            http://freedesktop.org/wiki/Software/vaapi
 Group:          Multimedia/Video
 Source:         %{name}-%{version}.tar.bz2
+Source1001: 	libva.manifest
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  mesa-devel
@@ -73,6 +74,7 @@ This contains the dummy driver.
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
 
 %build
 %autogen
@@ -95,6 +97,7 @@ grep -r include %{buildroot}%{_includedir}
 %postun -p /sbin/ldconfig
 
 %files -n vaapi-tools
+%manifest %{name}.manifest
 %defattr(-,root,root,-)
 %{_bindir}/vainfo
 %{_bindir}/avcenc
@@ -107,11 +110,13 @@ grep -r include %{buildroot}%{_includedir}
 %endif
 
 %files -n vaapi-dummy-driver
+%manifest %{name}.manifest
 %defattr(-,root,root,-)
 %dir %{_libdir}/dri
 %{_libdir}/dri/dummy_drv_video.so
 
 %files
+%manifest %{name}.manifest
 %defattr(-, root, root)
 %license COPYING
 %{_libdir}/libva.so.*
@@ -125,6 +130,7 @@ grep -r include %{buildroot}%{_includedir}
 %{_libdir}/libva-drm.so.*
 
 %files devel
+%manifest %{name}.manifest
 %defattr(-,root,root,-)
 %{_libdir}/libva.so
 %{_libdir}/libva-tpi.so
