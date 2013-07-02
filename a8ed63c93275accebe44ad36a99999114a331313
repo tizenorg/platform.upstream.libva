@@ -1,0 +1,9 @@
+Change-Id: Ia8ed63c93275accebe44ad36a99999114a331313
+Code-Review+1: Yan Yin <yan.yin@intel.com>
+Code-Review+2: Halley Zhao <halley.zhao@intel.com>
+Verified+1: Halley Zhao <halley.zhao@intel.com>
+Submitted-by: Halley Zhao <halley.zhao@intel.com>
+Submitted-at: Mon, 01 Jul 2013 19:58:52 -0700
+Reviewed-on: https://review.tizen.org/gerrit/5305
+Project: platform/upstream/libva
+Branch: refs/heads/tizen
