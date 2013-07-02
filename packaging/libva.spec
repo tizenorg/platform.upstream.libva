@@ -11,13 +11,13 @@ Group:          Multimedia/Video
 Source:         %{name}-%{version}.tar.bz2
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
-BuildRequires:  mesa-devel
 BuildRequires:  pkg-config
 BuildRequires:  xz
 %if %{with mesa}
-BuildRequires: pkgconfig(gl)
+BuildRequires:  mesa-devel
 %else
 BuildRequires: pkgconfig(gles11)
+BuildRequires:  pkgconfig(egl)
 %endif
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libudev)
@@ -78,7 +78,9 @@ This contains the dummy driver.
 %autogen
 %configure --enable-dummy-driver \
            --enable-dummy-backend \
+%if %{with mesa}
            --enable-glx \
+%endif
            --enable-egl \
 %if %{with wayland}
            --enable-wayland \
@@ -118,7 +120,9 @@ grep -r include %{buildroot}%{_includedir}
 %{_libdir}/libva.so.*
 %{_libdir}/libva-tpi.so.*
 %{_libdir}/libva-x11.so.*
+%if %{with mesa}
 %{_libdir}/libva-glx.so.*
+%endif
 %{_libdir}/libva-egl.so.*
 %if %{with wayland}
 %{_libdir}/libva-wayland.so.*
@@ -130,7 +134,9 @@ grep -r include %{buildroot}%{_includedir}
 %{_libdir}/libva.so
 %{_libdir}/libva-tpi.so
 %{_libdir}/libva-x11.so
+%if %{with mesa}
 %{_libdir}/libva-glx.so
+%endif
 %{_libdir}/libva-egl.so
 %if %{with wayland}
 %{_libdir}/libva-wayland.so
