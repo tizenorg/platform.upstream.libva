@@ -1,3 +1,6 @@
+* Tue Jul 02 2013 Zhao Halley <halley.zhao@intel.com> submit/tizen/20130702.084901@d0b5508
+- update spec file: use %{with mesa} for mesa-devel and libva-glx feature, fix build failure for mobile
+
 * Thur Jun 27 2013 Halley Zhao <halley.zhao@intel.com> upstream/1.2.1@88ed1eb
 - update to 1.2.1
 
