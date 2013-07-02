@@ -1,0 +1,9 @@
+Change-Id: Id0b55088b7133dcd62ef680e861307089e6d584b
+Code-Review+1: Junfeng Dong <junfeng.dong@intel.com>
+Code-Review+2: Halley Zhao <halley.zhao@intel.com>
+Verified+1: Halley Zhao <halley.zhao@intel.com>
+Submitted-by: Halley Zhao <halley.zhao@intel.com>
+Submitted-at: Tue, 02 Jul 2013 01:17:35 -0700
+Reviewed-on: https://review.tizen.org/gerrit/5348
+Project: platform/upstream/libva
+Branch: refs/heads/tizen
