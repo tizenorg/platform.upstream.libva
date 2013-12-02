@@ -1,5 +1,6 @@
 %bcond_with wayland 
 %bcond_with mesa
+%bcond_without x
 
 Name:           libva
 Version:        1.2.1
@@ -16,16 +17,18 @@ BuildRequires:  xz
 %if %{with mesa}
 BuildRequires:  mesa-devel
 %else
-BuildRequires: pkgconfig(gles11)
+BuildRequires: pkgconfig(glesv2)
 BuildRequires:  pkgconfig(egl)
 %endif
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libudev)
+%if !%{without x}
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xv)
+%endif
 %if %{with wayland}
 BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(wayland-client)
@@ -42,8 +45,10 @@ Group:          Development/Libraries
 Requires:       libva = %{version}
 Requires:       pkgconfig(gl)
 Requires:       pkgconfig(libdrm)
+%if !%{without x}
 Requires:       pkgconfig(x11)
 Requires:       pkgconfig(xfixes)
+%endif
 
 %description devel
 The libva library implements the Video Acceleration (VA) API for Linux.
@@ -75,15 +80,19 @@ This contains the dummy driver.
 %setup -q
 
 %build
+# --enable-x11 set to no explicitly, otherwise it will mislead libva build when other package brings in X11 lib
 %autogen
 %configure --enable-dummy-driver \
            --enable-dummy-backend \
-%if %{with mesa}
+%if %{with mesa} && !%{without x}
            --enable-glx \
 %endif
            --enable-egl \
 %if %{with wayland}
            --enable-wayland \
+%endif
+%if %{without x}
+        --enable-x11=no \
 %endif
            --with-drivers-path=%{_libdir}/dri
 make %{?_smp_mflags}
@@ -119,9 +128,11 @@ grep -r include %{buildroot}%{_includedir}
 %license COPYING
 %{_libdir}/libva.so.*
 %{_libdir}/libva-tpi.so.*
+%if !%{without x}
 %{_libdir}/libva-x11.so.*
-%if %{with mesa}
-%{_libdir}/libva-glx.so.*
+%endif
+%if %{with mesa} && !%{without x}
+    %{_libdir}/libva-glx.so.*
 %endif
 %{_libdir}/libva-egl.so.*
 %if %{with wayland}
@@ -133,9 +144,11 @@ grep -r include %{buildroot}%{_includedir}
 %defattr(-,root,root,-)
 %{_libdir}/libva.so
 %{_libdir}/libva-tpi.so
+%if !%{without x}
 %{_libdir}/libva-x11.so
-%if %{with mesa}
-%{_libdir}/libva-glx.so
+%endif
+%if %{with mesa} && !%{without x}
+    %{_libdir}/libva-glx.so
 %endif
 %{_libdir}/libva-egl.so
 %if %{with wayland}
