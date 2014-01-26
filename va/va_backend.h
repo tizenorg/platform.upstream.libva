@@ -423,14 +423,14 @@ struct VADriverVTable
 
         VAStatus
         (*vaLockBuffer)(
-            VADisplay           dpy,
+            VADriverContextP    ctx,
             VABufferID          buf_id,
             VABufferInfo *      buf_info_ptr
         );
 
         VAStatus
         (*vaUnlockBuffer)(
-            VADisplay           dpy,
+            VADriverContextP    ctx,
             VABufferID          buf_id,
             VABufferInfo *      buf_info_ptr
         );

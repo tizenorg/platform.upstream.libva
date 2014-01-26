@@ -1065,7 +1065,7 @@ vaLockBuffer(
 
     if (!ctx->vtable->vaLockBuffer)
         return VA_STATUS_ERROR_UNIMPLEMENTED;
-    return ctx->vtable->vaLockBuffer(dpy, buf_id, buf_info_ptr);
+    return ctx->vtable->vaLockBuffer(ctx, buf_id, buf_info_ptr);
 }
 
 /* Unlocks buffer after usage from external API */
@@ -1083,7 +1083,7 @@ vaUnlockBuffer(
 
     if (!ctx->vtable->vaUnlockBuffer)
         return VA_STATUS_ERROR_UNIMPLEMENTED;
-    return ctx->vtable->vaUnlockBuffer(dpy, buf_id, buf_info_ptr);
+    return ctx->vtable->vaUnlockBuffer(ctx, buf_id, buf_info_ptr);
 }
 
 VAStatus vaBeginPicture (
