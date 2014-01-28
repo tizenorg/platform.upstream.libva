@@ -1,6 +1,6 @@
-%bcond_with wayland 
+%bcond_with wayland
 %bcond_with mesa
-%bcond_without x
+%bcond_with x
 
 Name:           libva
 Version:        1.2.1
@@ -22,7 +22,7 @@ BuildRequires:  pkgconfig(egl)
 %endif
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libudev)
-%if !%{without x}
+%if %{with x}
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
@@ -43,11 +43,15 @@ The library loads a hardware dependendent driver.
 Summary:        Video Acceleration (VA) API for Linux -- development files
 Group:          Development/Libraries
 Requires:       libva = %{version}
-Requires:       pkgconfig(gl)
 Requires:       pkgconfig(libdrm)
-%if !%{without x}
+%if %{with x}
+Requires:       pkgconfig(gl)
 Requires:       pkgconfig(x11)
 Requires:       pkgconfig(xfixes)
+%endif
+%if %{with wayland}
+Requires:  pkgconfig(wayland-egl)
+Requires:  pkgconfig(wayland-client)
 %endif
 
 %description devel
@@ -84,18 +88,19 @@ This contains the dummy driver.
 %autogen
 %configure --enable-dummy-driver \
            --enable-dummy-backend \
-%if %{with mesa} && !%{without x}
+%if %{with mesa} && %{with x}
            --enable-glx \
 %endif
            --enable-egl \
 %if %{with wayland}
            --enable-wayland \
 %endif
-%if %{without x}
+%if !%{with x}
         --enable-x11=no \
 %endif
            --with-drivers-path=%{_libdir}/dri
 make %{?_smp_mflags}
+
 
 %install
 %make_install
@@ -112,9 +117,11 @@ grep -r include %{buildroot}%{_includedir}
 %{_bindir}/h264encode
 %{_bindir}/mpeg2vldemo
 %{_bindir}/mpeg2vaenc
+%if %{with x}
 %{_bindir}/putsurface
+%endif
 %{_bindir}/loadjpeg
-%if %{with wayland}
+%if %{with wayland} && %{with x}
 %{_bindir}/putsurface_wayland
 %endif
 
@@ -128,10 +135,10 @@ grep -r include %{buildroot}%{_includedir}
 %license COPYING
 %{_libdir}/libva.so.*
 %{_libdir}/libva-tpi.so.*
-%if !%{without x}
+%if %{with x}
 %{_libdir}/libva-x11.so.*
 %endif
-%if %{with mesa} && !%{without x}
+%if %{with mesa} && %{with x}
     %{_libdir}/libva-glx.so.*
 %endif
 %{_libdir}/libva-egl.so.*
@@ -144,10 +151,10 @@ grep -r include %{buildroot}%{_includedir}
 %defattr(-,root,root,-)
 %{_libdir}/libva.so
 %{_libdir}/libva-tpi.so
-%if !%{without x}
+%if %{with x}
 %{_libdir}/libva-x11.so
 %endif
-%if %{with mesa} && !%{without x}
+%if %{with mesa} && %{with x}
     %{_libdir}/libva-glx.so
 %endif
 %{_libdir}/libva-egl.so
