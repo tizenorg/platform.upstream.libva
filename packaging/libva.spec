@@ -117,7 +117,7 @@ grep -r include %{buildroot}%{_includedir}
 %endif
 %{_bindir}/loadjpeg
 %if %{with wayland}
-%{_bindir}/putsurface_wayland
+# %{_bindir}/putsurface_wayland
 %endif
 
 %files -n vaapi-dummy-driver
