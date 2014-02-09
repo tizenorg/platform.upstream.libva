@@ -20,10 +20,10 @@
 # TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-SUBDIRS = common decode encode vainfo
+SUBDIRS = common decode encode vainfo putsurface
 
 if USE_X11
-SUBDIRS += basic putsurface
+SUBDIRS += basic
 endif
 
 EXTRA_DIST = loadsurface.h loadsurface_yuv.h
