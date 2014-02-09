@@ -1,3 +1,10 @@
+* Mon Feb 10 2014 Zhao, Halley <halley.zhao@intel.com> submit/tizen/20140209.204006@1e6feb0
+- test: update putsurface for wayland only build
+- spec: update with %bcond_with x
+- API: add support for buffer exports (TIVI-2315)
+- update spec for pure wayland build
+- changelog: fix build failure for mobile
+
 * Tue Jul 02 2013 Zhao Halley <halley.zhao@intel.com> submit/tizen/20130702.084901@d0b5508
 - update spec file: use %{with mesa} for mesa-devel and libva-glx feature, fix build failure for mobile
 
