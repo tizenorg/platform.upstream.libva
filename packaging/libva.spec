@@ -1,4 +1,4 @@
-%bcond_with wayland 
+%bcond_with wayland
 %bcond_with mesa
 %bcond_with x
 
@@ -43,11 +43,15 @@ The library loads a hardware dependendent driver.
 Summary:        Video Acceleration (VA) API for Linux -- development files
 Group:          Development/Libraries
 Requires:       libva = %{version}
-Requires:       pkgconfig(gl)
 Requires:       pkgconfig(libdrm)
 %if %{with x}
+Requires:       pkgconfig(gl)
 Requires:       pkgconfig(x11)
 Requires:       pkgconfig(xfixes)
+%endif
+%if %{with wayland}
+Requires:  pkgconfig(wayland-egl)
+Requires:  pkgconfig(wayland-client)
 %endif
 
 %description devel
