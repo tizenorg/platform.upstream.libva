@@ -20,8 +20,6 @@
 # TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-bin_PROGRAMS = putsurface
-
 INCLUDES = \
 	-I$(top_srcdir)		\
 	-I$(top_builddir)	\
@@ -36,11 +34,16 @@ TEST_LIBS = \
 	-lpthread		\
 	$(NULL)
 
+bin_PROGRAMS =
+
+if USE_X11
+bin_PROGRAMS += putsurface
 putsurface_SOURCES		= putsurface_x11.c
 putsurface_CFLAGS		= $(X11_CFLAGS) $(TEST_CFLAGS)
 putsurface_LDADD		= $(X11_LIBS) $(TEST_LIBS)	\
 	$(top_builddir)/va/libva-x11.la			\
 	$(NULL)
+endif
 
 if USE_WAYLAND
 bin_PROGRAMS			+= putsurface_wayland
