@@ -1,0 +1,28 @@
+* Mon Feb 10 2014 Zhao, Halley <halley.zhao@intel.com> submit/tizen/20140209.204006@1e6feb0
+- test: update putsurface for wayland only build
+- spec: update with %bcond_with x
+- API: add support for buffer exports (TIVI-2315)
+- update spec for pure wayland build
+- changelog: fix build failure for mobile
+
+* Tue Jul 02 2013 Zhao Halley <halley.zhao@intel.com> submit/tizen/20130702.084901@d0b5508
+- update spec file: use %{with mesa} for mesa-devel and libva-glx feature, fix build failure for mobile
+
+* Thur Jun 27 2013 Halley Zhao <halley.zhao@intel.com> upstream/1.2.1@88ed1eb
+- update to 1.2.1
+
+* Wed Jun 19 2013 Anas Nashif <anas.nashif@intel.com> accepted/tizen/20130520.100019@a7bfaf6
+- make wayland support conditional
+
+* Wed Mar 27 2013 Anas Nashif <anas.nashif@intel.com> libva-1.1.1@450ef75
+- changelog: update to 1.1.1
+
+* Mon Feb 11 2013 Anas Nashif <anas.nashif@intel.com> submit/trunk/20130211.174659@8edcb1c
+- /usr/lib64 -> %{_libdir}
+
+* Mon Feb 11 2013 Anas Nashif <anas.nashif@intel.com> libva-1.0.11@9b24e83
+- Build with wayland support
+
+* Mon Feb 11 2013 Anas Nashif <anas.nashif@intel.com> upstream/1.1.0@3899ac7
+- Update to 1.1.0
+
