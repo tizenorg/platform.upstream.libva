@@ -23,7 +23,9 @@
 SUBDIRS = common decode encode vainfo
 
 if USE_X11
-SUBDIRS += basic putsurface
+SUBDIRS += basic
 endif
+
+SUBDIRS += putsurface
 
 EXTRA_DIST = loadsurface.h loadsurface_yuv.h
