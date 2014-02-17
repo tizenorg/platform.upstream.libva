@@ -118,6 +118,7 @@ grep -r include %{buildroot}%{_includedir}
 %{_bindir}/mpeg2vaenc
 %if %{with x}
 %{_bindir}/putsurface
+%{_bindir}/mpeg2transcode
 %endif
 %{_bindir}/loadjpeg
 %if %{with wayland}
