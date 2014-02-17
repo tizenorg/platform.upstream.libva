@@ -1,3 +1,12 @@
+* Tue Feb 18 2014 Zhao, Halley <halley.zhao@intel.com> staging-20130205@da5f077
+- spec: add mpeg2transcode for vaapi-tools
+- test: add example code of buffer exports in putsurface
+- add VA_SURFACE_ATTRIB_MEM_TYPE_KERNEL_DRM_BO in va_drmcommon.h
+- API: add support for buffer exports.
+- test: update putsurface for wayland only build
+- add packaging folder
+- sync with upstream staging branch
+
 * Mon Feb 10 2014 Zhao, Halley <halley.zhao@intel.com> submit/tizen/20140209.204006@1e6feb0
 - test: update putsurface for wayland only build
 - spec: update with %bcond_with x
