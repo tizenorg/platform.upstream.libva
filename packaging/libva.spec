@@ -88,15 +88,16 @@ This contains the dummy driver.
 %autogen
 %configure --enable-dummy-driver \
            --enable-dummy-backend \
-%if %{with mesa} && %{with x}
+%if %{with x}
+%if %{with mesa}
            --enable-glx \
+%endif
+%else
+        --enable-x11=no \
 %endif
            --enable-egl \
 %if %{with wayland}
            --enable-wayland \
-%endif
-%if !%{with x}
-        --enable-x11=no \
 %endif
            --with-drivers-path=%{_libdir}/dri
 make %{?_smp_mflags}
