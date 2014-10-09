@@ -3,7 +3,7 @@
 %bcond_with x
 
 Name:           libva
-Version:        1.3.1
+Version:        1.4.0
 Release:        0
 License:        MIT
 Summary:        Video Acceleration (VA) API for Linux
