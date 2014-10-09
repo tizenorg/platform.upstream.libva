@@ -37,8 +37,6 @@
 #include <fcntl.h>
 #include <assert.h>
 #include <pthread.h>
-#include "va/va.h"
-#include "va/va_drmcommon.h"
 
 /*currently, if XCheckWindowEvent was called  in more than one thread, it would cause
  * XIO:  fatal IO error 11 (Resource temporarily unavailable) on X server ":0.0"
@@ -470,24 +468,6 @@ static void* putsurface_thread(void *data)
     
         }
         else {
-            unsigned int fourcc, luma_stride, chroma_u_stride, chroma_v_stride;
-            unsigned int luma_offset, chroma_u_offset, chroma_v_offset, buffer_name;
-            void *buffer;
-            VABufferInfo buf_info;
-            vaLockSurface(va_dpy, surface_id, &fourcc,
-                &luma_stride, &chroma_u_stride, &chroma_v_stride,
-                &luma_offset, &chroma_u_offset, &chroma_v_offset,
-                &buffer_name, &buffer);
-
-            buf_info.mem_type = VA_SURFACE_ATTRIB_MEM_TYPE_KERNEL_DRM_BO;
-            vaLockBuffer(va_dpy, buffer_name, &buf_info);
-
-            printf("surface buffer info: buf_info.handle: 0x%x, buf_info.type: %d, buf_info.mem_type: 0x%x, buf_info.mem_size: %d\n",
-                buf_info.handle, buf_info.type, buf_info.mem_type, buf_info.mem_size);
-
-            vaUnlockBuffer(va_dpy, buffer_name, &buf_info);
-            vaUnlockSurface(va_dpy, surface_id);
-
             vaStatus = vaPutSurface(va_dpy, surface_id, CAST_DRAWABLE(drawable),
                                     0,0,surface_width,surface_height,
                                     0,0,width,height,
