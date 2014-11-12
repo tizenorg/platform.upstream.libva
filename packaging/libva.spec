@@ -3,11 +3,12 @@
 %bcond_with x
 
 Name:           libva
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 License:        MIT
 Summary:        Video Acceleration (VA) API for Linux
 Url:            http://freedesktop.org/wiki/Software/vaapi
+#X-Vc-Url:      git://anongit.freedesktop.org/libva
 Group:          Multimedia/Video
 Source:         %{name}-%{version}.tar.bz2
 BuildRequires:  gcc-c++
